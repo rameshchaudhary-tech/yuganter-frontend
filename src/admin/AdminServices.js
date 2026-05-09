@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -11,22 +11,25 @@ const AdminServices = () => {
     const [statusFilter, setStatusFilter] = useState("All");
 
     /* ================= FETCH SERVICES ================= */
-    const fetchServices = async() => {
+    const fetchServices = useCallback(async() => {
         try {
             setLoading(true);
 
             const token = localStorage.getItem("adminToken");
 
-            const res = await axios.get("http://localhost:5000/api/services", {
-                headers: token ? { Authorization: "Bearer " + token } : {}
-            });
+            const res = await axios.get(
+                "http://localhost:5000/api/services", {
+                    headers: token ?
+                        { Authorization: "Bearer " + token } :
+                        {},
+                }
+            );
 
             if (res.data && res.data.success) {
                 setServices(res.data.data || []);
             } else {
                 setServices([]);
             }
-
         } catch (err) {
             console.log("FETCH ERROR:", err);
 
@@ -42,15 +45,14 @@ const AdminServices = () => {
             }
 
             setServices([]);
-
         } finally {
             setLoading(false);
         }
-    };
+    }, [navigate]);
 
     useEffect(() => {
         fetchServices();
-    }, []);
+    }, [fetchServices]);
 
     /* ================= DELETE ================= */
     const handleDelete = async(id) => {
@@ -74,7 +76,6 @@ const AdminServices = () => {
             } else {
                 alert("Delete Failed ❌");
             }
-
         } catch (err) {
             console.log("DELETE ERROR:", err);
             alert("Error deleting service ❌");
@@ -85,7 +86,8 @@ const AdminServices = () => {
     const filteredServices = services.filter((s) => {
         const title = (s.title || "").toLowerCase();
 
-        const matchSearch = title.indexOf(search.toLowerCase()) !== -1;
+        const matchSearch =
+            title.indexOf(search.toLowerCase()) !== -1;
 
         const matchStatus =
             statusFilter === "All" ||
@@ -111,7 +113,7 @@ const AdminServices = () => {
         <
         h1 className = "text-2xl font-bold" > 🛠Services < /h1>
 
-        { /* ADD SERVICE BUTTON */ } <
+        <
         button onClick = {
             () => navigate("/admin/services/add") }
         className = "bg-green-600 text-white px-4 py-2 rounded" >
@@ -162,9 +164,7 @@ const AdminServices = () => {
 
         {
             loading ? ( <
-                div className = "p-6 text-center" >
-                Loading... <
-                /div>
+                div className = "p-6 text-center" > Loading... < /div>
             ) : ( <
                 table className = "w-full" >
 
@@ -175,7 +175,7 @@ const AdminServices = () => {
                 <
                 th className = "p-3 text-left" > Title < /th> <
                 th className = "p-3 text-left" > Description < /th> <
-                th className = "p-3" > Popular < /th> <
+                th className = "p-3 text-center" > Popular < /th> <
                 th className = "p-3 text-center" > Action < /th> <
                 /tr> <
                 /thead>
@@ -202,10 +202,13 @@ const AdminServices = () => {
                             <
                             td className = "p-3 text-center flex gap-2 justify-center" >
 
-                            { /* EDIT → NEW PAGE */ } <
+                            <
                             button onClick = {
                                 () =>
-                                navigate("/admin/services/edit/" + s._id)
+                                navigate(
+                                    "/admin/services/edit/" +
+                                    s._id
+                                )
                             }
                             className = "bg-blue-500 text-white px-3 py-1 rounded" >
                             Edit <
@@ -213,7 +216,9 @@ const AdminServices = () => {
 
                             <
                             button onClick = {
-                                () => handleDelete(s._id) }
+                                () =>
+                                handleDelete(s._id)
+                            }
                             className = "bg-red-500 text-white px-3 py-1 rounded" >
                             Delete <
                             /button>
