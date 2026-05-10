@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Users, BookOpen, Layers, FileText, CheckCircle, ArrowLeft, BarChart3 } from "lucide-react";
+import BASE_URL from "../BASEURL";
 
 const AdminAnalytics = () => {
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ const AdminAnalytics = () => {
     const fetchAnalytics = async() => {
         try {
             const token = localStorage.getItem("adminToken");
-            const res = await axios.get("http://localhost:5000/api/analytics/stats", {
+            const res = await axios.get(`${BASE_URL}/api/analytics/stats`, {
                 headers: { Authorization: "Bearer " + token },
             });
 
@@ -52,10 +53,10 @@ const AdminAnalytics = () => {
         div className = { `p-3 rounded-2xl ${colorClass} bg-opacity-10` } >
         <
         Icon className = { `w-6 h-6 ${colorClass.replace('bg-', 'text-')}` }
-        /> <
-        /div> <
-        span className = "text-xs font-bold text-green-500 bg-green-50 px-2 py-1 rounded-lg" > +Live < /span> <
-        /div>
+        /> < /
+        div > <
+        span className = "text-xs font-bold text-green-500 bg-green-50 px-2 py-1 rounded-lg" > +Live < /span> < /
+        div >
 
         <
         div className = "mt-5 relative z-10" >
@@ -63,14 +64,14 @@ const AdminAnalytics = () => {
         h3 className = "text-gray-500 font-medium text-sm tracking-wide uppercase" > { title } < /h3> <
         div className = "flex items-baseline gap-2" >
         <
-        h1 className = "text-4xl font-extrabold text-gray-900 tracking-tight" > { value } < /h1> <
-        /div> <
+        h1 className = "text-4xl font-extrabold text-gray-900 tracking-tight" > { value } < /h1> < /
+        div > <
         p className = "text-gray-400 text-xs mt-2 flex items-center gap-1" >
         <
         CheckCircle className = "w-3 h-3 text-blue-400" / >
         Updated just now <
-        /p> <
-        /div> <
+        /p> < /
+        div > <
         /div>
     );
 
@@ -79,8 +80,8 @@ const AdminAnalytics = () => {
             div className = "min-h-screen flex flex-col items-center justify-center bg-gray-50" >
             <
             div className = "w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" > < /div> <
-            p className = "mt-4 text-gray-600 font-medium animate-pulse" > Gathering insights... < /p> <
-            /div>
+            p className = "mt-4 text-gray-600 font-medium animate-pulse" > Gathering insights... < /p> < /
+            div >
         );
     }
 
@@ -99,28 +100,29 @@ const AdminAnalytics = () => {
         div className = "bg-indigo-600 p-2 rounded-lg text-white" >
         <
         BarChart3 size = { 28 }
-        /> <
-        /div> <
+        /> < /
+        div > <
         h1 className = "text-3xl md:text-4xl font-black text-gray-900 tracking-tight" >
-        Dashboard < span className = "text-indigo-600" > Analytics < /span> <
-        /h1> <
+        Dashboard < span className = "text-indigo-600" > Analytics < /span> < /
+        h1 > <
         /div> <
         p className = "text-gray-500 mt-2 font-medium" >
         Welcome back, Admin.Here 's what'
         s happening today. <
-        /p> <
-        /div>
+        /p> < /
+        div >
 
         <
         button onClick = {
-            () => navigate("/admin") }
+            () => navigate("/admin")
+        }
         className = "group flex items-center gap-2 bg-white text-gray-700 border border-gray-200 px-6 py-3 rounded-2xl hover:bg-gray-900 hover:text-white transition-all duration-300 shadow-sm font-semibold" >
         <
         ArrowLeft size = { 18 }
         className = "group-hover:-translate-x-1 transition-transform" / >
         Back to Portal <
-        /button> <
-        /div>
+        /button> < /
+        div >
 
         { /* STATS GRID */ } <
         div className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6" >
@@ -161,18 +163,18 @@ const AdminAnalytics = () => {
         p className = "text-indigo-200 mt-1" > All modules are running smoothly without any reported errors. < /p> <
         button className = "mt-4 bg-white text-indigo-900 px-6 py-2 rounded-xl font-bold text-sm hover:bg-indigo-50 transition-colors" >
         View Server Logs <
-        /button> <
-        /div> <
+        /button> < /
+        div > <
         div className = "absolute right-0 top-0 opacity-10 pointer-events-none" >
         <
         BarChart3 size = { 300 }
-        /> <
-        /div> <
+        /> < /
+        div > <
         /div>
 
         <
-        /div> <
-        /div>
+        /div> < /
+        div >
     );
 };
 
