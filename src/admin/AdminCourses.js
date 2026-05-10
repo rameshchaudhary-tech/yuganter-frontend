@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import BASE_URL from "../BASEURL";
 
 const AdminCourses = () => {
 
@@ -21,7 +22,7 @@ const AdminCourses = () => {
             setLoading(true);
 
             const response = await axios.get(
-                "http://localhost:5000/api/course-highlights?all=true"
+                `${BASE_URL}/api/course-highlights?all=true`
             );
 
             if (
