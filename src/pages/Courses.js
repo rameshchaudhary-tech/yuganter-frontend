@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import CourseCard from "../components/CourseCard";
 import EnrollmentModal from "../components/EnrollmentModal";
 import axios from "axios";
+import BASE_URL from "../BASEURL";
 
 export default function Courses() {
 
@@ -22,7 +23,7 @@ export default function Courses() {
     const fetchAllCourses = async() => {
         try {
             const res = await axios.get(
-                "http://localhost:5000/api/course-highlights?all=true"
+                `${BASE_URL}/api/course-highlights?all=true`
             );
 
             if (res.data.success) {
@@ -76,8 +77,8 @@ export default function Courses() {
         Our { " " } <
         span className = "bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent" >
         IT Courses <
-        /span> <
-        /h1>
+        /span> < /
+        h1 >
 
         <
         p className = "text-lg md:text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl" >
@@ -183,8 +184,8 @@ export default function Courses() {
                 <
                 CourseCard course = { course }
                 onEnroll = { handleEnroll }
-                /> <
-                /div>
+                /> < /
+                div >
             ))
         }
 
@@ -215,8 +216,8 @@ export default function Courses() {
         span className = "bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent" >
         IT Career ?
         <
-        /span> <
-        /h3>
+        /span> < /
+        h3 >
 
         <
         p className = "text-lg text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed" >
@@ -254,7 +255,8 @@ export default function Courses() {
         EnrollmentModal course = { selectedCourse }
         isOpen = { isModalOpen }
         onClose = {
-            () => setIsModalOpen(false) }
+            () => setIsModalOpen(false)
+        }
         />
 
         <

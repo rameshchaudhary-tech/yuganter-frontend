@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import ServiceBookingModal from "../components/ServiceBookingModal";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import axios from "axios";
+import
 
 export default function Services() {
 
@@ -34,7 +35,7 @@ export default function Services() {
         try {
 
             const res = await axios.get(
-                "http://localhost:5000/api/services"
+                `${BASE_URL}/api/services`
             );
 
             if (res.data && res.data.success) {
@@ -264,8 +265,7 @@ export default function Services() {
                                 transitionDelay: `${index * 100}ms`,
                                 opacity: isVisible ? 1 : 0,
                                 transform: isVisible ?
-                                    "translateY(0)" :
-                                    "translateY(40px)",
+                                    "translateY(0)" : "translateY(40px)",
                             }
                         } >
 

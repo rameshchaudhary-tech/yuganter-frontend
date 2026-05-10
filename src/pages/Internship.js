@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import InternshipModal from "../components/InternshipModal";
 import { motion } from "framer-motion";
 import axios from "axios";
-
+import BASE_URL from "../BASEURL";
 export default function Internship() {
 
     const [selectedInternship, setSelectedInternship] = useState(null);
@@ -16,7 +16,7 @@ export default function Internship() {
 
         const fetchInternships = async() => {
             try {
-                const res = await axios.get("http://localhost:5000/api/internship/positions");
+                const res = await axios.get(`${BASE_URL}/api/internship/positions`);
 
                 if (res.data && res.data.success) {
                     setInternshipPrograms(res.data.data);
@@ -89,7 +89,8 @@ export default function Internship() {
             benefits.map((b, i) => ( <
                 motion.div key = { i }
                 whileHover = {
-                    { y: -8 } }
+                    { y: -8 }
+                }
                 className = "bg-gray-800 p-8 rounded-3xl text-center shadow-lg hover:shadow-2xl transition" >
 
                 <
@@ -136,7 +137,8 @@ export default function Internship() {
                 <
                 motion.div key = { i }
                 whileHover = {
-                    { scale: 1.05 } }
+                    { scale: 1.05 }
+                }
                 className = "bg-gray-800 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition" >
 
                 <
@@ -160,8 +162,7 @@ export default function Internship() {
                 {
                     p.skills && p.skills.map((s, idx) => ( <
                         span key = { idx }
-                        className = "text-xs px-3 py-1 bg-gray-700 rounded-full" >
-                        { s } <
+                        className = "text-xs px-3 py-1 bg-gray-700 rounded-full" > { s } <
                         /span>
                     ))
                 }
@@ -171,7 +172,8 @@ export default function Internship() {
 
                 <
                 button onClick = {
-                    () => openModal(p) }
+                    () => openModal(p)
+                }
                 className = "w-full inline-flex items-center justify-center gap-3 bg-gradient-to-r from-secondary-500 to-primary-500 px-5 py-2 rounded-xl font-bold text-white shadow-xl shadow-secondary-500/20" >
                 Apply Now <
                 /button>
@@ -219,7 +221,8 @@ export default function Internship() {
         InternshipModal internship = { selectedInternship }
         isOpen = { isModalOpen }
         onClose = {
-            () => setIsModalOpen(false) }
+            () => setIsModalOpen(false)
+        }
         />
 
         <

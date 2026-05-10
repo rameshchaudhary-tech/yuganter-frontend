@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
+import BASE_URL from "../BASEURL";
 
 export default function Blog() {
 
@@ -35,7 +36,7 @@ export default function Blog() {
         try {
 
             const res = await axios.get(
-                "http://localhost:5000/api/blogs"
+                `${BASE_URL}/api/blogs`
             );
 
             if (res.data && res.data.success) {
@@ -101,8 +102,8 @@ export default function Blog() {
         <
         span className = "text-secondary-400" >
         Future Trends. <
-        /span> <
-        /h1>
+        /span> < /
+        h1 >
 
         <
         p className = "text-lg md:text-xl text-gray-400 mb-8 max-w-2xl leading-relaxed" >
@@ -222,7 +223,8 @@ export default function Blog() {
                         div className = { `absolute -inset-1 bg-gradient-to-r ${
                                                 gradientColors[index % gradientColors.length]
                                             } opacity-10 blur-3xl group-hover:opacity-30 transition-all duration-500` } >
-                        < /div>
+                        <
+                        /div>
 
                         { /* Content */ } <
                         div className = "relative z-10 p-8 flex flex-col h-full" >

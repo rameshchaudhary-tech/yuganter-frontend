@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import BASE_URL from "../BASEURL";
 
 const AdminServices = () => {
     const navigate = useNavigate();
@@ -18,10 +19,8 @@ const AdminServices = () => {
             const token = localStorage.getItem("adminToken");
 
             const res = await axios.get(
-                "http://localhost:5000/api/services", {
-                    headers: token ?
-                        { Authorization: "Bearer " + token } :
-                        {},
+                `${BASE_URL}/api/services`, {
+                    headers: token ? { Authorization: "Bearer " + token } : {},
                 }
             );
 
@@ -63,7 +62,7 @@ const AdminServices = () => {
             const token = localStorage.getItem("adminToken");
 
             const res = await axios.delete(
-                "http://localhost:5000/api/services/" + id, {
+                `${BASE_URL}/api/services/` + id, {
                     headers: {
                         Authorization: "Bearer " + token,
                     },
@@ -105,9 +104,9 @@ const AdminServices = () => {
 
         <
         button onClick = {
-            () => navigate(-1) }
-        className = "bg-white px-3 py-2 rounded shadow" >
-        ⬅Back <
+            () => navigate(-1)
+        }
+        className = "bg-white px-3 py-2 rounded shadow" > ⬅Back <
         /button>
 
         <
@@ -115,7 +114,8 @@ const AdminServices = () => {
 
         <
         button onClick = {
-            () => navigate("/admin/services/add") }
+            () => navigate("/admin/services/add")
+        }
         className = "bg-green-600 text-white px-4 py-2 rounded" >
         +Add Service <
         /button>
@@ -131,19 +131,21 @@ const AdminServices = () => {
         placeholder = "Search..."
         value = { search }
         onChange = {
-            (e) => setSearch(e.target.value) }
+            (e) => setSearch(e.target.value)
+        }
         />
 
         <
         select className = "border p-2 rounded"
         value = { statusFilter }
         onChange = {
-            (e) => setStatusFilter(e.target.value) } >
+            (e) => setStatusFilter(e.target.value)
+        } >
         <
         option value = "All" > All < /option> <
         option value = "Active" > Active < /option> <
-        option value = "Draft" > Draft < /option> <
-        /select>
+        option value = "Draft" > Draft < /option> < /
+        select >
 
         <
         button onClick = {
@@ -176,8 +178,8 @@ const AdminServices = () => {
                 th className = "p-3 text-left" > Title < /th> <
                 th className = "p-3 text-left" > Description < /th> <
                 th className = "p-3 text-center" > Popular < /th> <
-                th className = "p-3 text-center" > Action < /th> <
-                /tr> <
+                th className = "p-3 text-center" > Action < /th> < /
+                tr > <
                 /thead>
 
                 <
@@ -235,8 +237,8 @@ const AdminServices = () => {
                         td className = "p-6 text-center text-gray-500"
                         colSpan = "4" >
                         No Services Found😢 <
-                        /td> <
-                        /tr>
+                        /td> < /
+                        tr >
                     )
                 } <
                 /tbody>

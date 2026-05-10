@@ -5,6 +5,7 @@ import PageHeader from "../components/PageHeader";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import EnrollmentModal from "../components/EnrollmentModal";
+import BASE_URL from "../BASEURL";
 
 import {
     CodeBracketIcon,
@@ -35,7 +36,7 @@ export default function CourseDetail() {
         const fetchCourse = async() => {
             try {
                 const res = await axios.get(
-                    `http://localhost:5000/api/course-highlights/detail/${slug}`
+                    `${BASE_URL}/api/course-highlights/detail/${slug}`
                 );
 
                 if (res.data.success) {

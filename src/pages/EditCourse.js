@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import BASE_URL from "../BASEURL";
 
 const EditCourse = () => {
 
@@ -55,7 +56,7 @@ const EditCourse = () => {
                 setLoading(true);
 
                 const response = await axios.get(
-                    "http://localhost:5000/api/course-highlights?all=true"
+                    `${BASE_URL}/api/course-highlights?all=true`
                 );
 
                 if (
@@ -270,7 +271,7 @@ const EditCourse = () => {
             }
 
             const response = await axios.put(
-                `http://localhost:5000/api/course-highlights/update/${id}`,
+                `${BASE_URL}/api/course-highlights/update/${id}`,
                 formData, {
                     headers: {
                         Authorization: `Bearer ${token}`,

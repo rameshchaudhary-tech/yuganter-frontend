@@ -9,6 +9,7 @@ import {
     LightBulbIcon,
 } from "@heroicons/react/24/outline";
 import axios from "axios";
+import BASE_URL from "../BASEURL";
 
 export default function Features() {
     const [ref, isVisible] = useScrollAnimation({ threshold: 0.12 });
@@ -21,7 +22,7 @@ export default function Features() {
     // ✅ FETCH FEATURES
     const fetchFeatures = async() => {
         try {
-            const res = await axios.get("http://localhost:5000/api/features");
+            const res = await axios.get(`${BASE_URL}/api/features`);
 
             if (res.data && res.data.success) {
                 setFeatures(res.data.data.featuresList);
@@ -59,8 +60,7 @@ export default function Features() {
     return ( <
         section ref = { ref }
         id = "features"
-        className = "relative py-28 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white overflow-hidden" >
-        { /* BACKGROUND */ } <
+        className = "relative py-28 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white overflow-hidden" > { /* BACKGROUND */ } <
         div className = "absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/circuit.png')] opacity-5" > < /div>
 
         <
@@ -82,15 +82,15 @@ export default function Features() {
         Why Choose { " " } <
         span className = "text-indigo-400" >
         YugAntar Technologies <
-        /span> <
-        /h2>
+        /span> < /
+        h2 >
 
         <
         p className = "mt-5 max-w-2xl text-gray-400 text-base md:text-lg leading-relaxed" >
         We focus on practical learning, industry - ready skills,
         and career growth. <
-        /p> <
-        /div>
+        /p> < /
+        div >
 
         { /* FEATURE GRID */ } <
         div className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10" >
@@ -110,7 +110,8 @@ export default function Features() {
                   colorMap[f.color] ||
                   "from-indigo-500 to-purple-500"
                 } opacity-40 rounded-3xl blur-[90px] group-hover:opacity-70 transition-all duration-500` } >
-                < /div>
+                <
+                /div>
 
                 { /* CARD BACKGROUND */ } <
                 div className = "absolute inset-0 bg-[#111827]/75 border border-white/10 rounded-3xl backdrop-blur-xl" > < /div>
@@ -138,14 +139,14 @@ export default function Features() {
                 /p>
 
                 <
-                /div> <
-                /div>
+                /div> < /
+                div >
             ))
         }
 
         <
-        /div> <
-        /div> <
+        /div> < /
+        div > <
         /section>
     );
 }

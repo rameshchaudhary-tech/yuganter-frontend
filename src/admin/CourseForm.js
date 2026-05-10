@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import BASE_URL from "../BASEURL";
 
 const CourseForm = () => {
     const navigate = useNavigate();
@@ -95,7 +96,7 @@ const CourseForm = () => {
             }
 
             const res = await axios.post(
-                "http://localhost:5000/api/course-highlights/upsert",
+                `${BASE_URL}/api/course-highlights/upsert`,
                 formData, {
                     headers: {
                         Authorization: "Bearer " + token
@@ -127,11 +128,11 @@ const CourseForm = () => {
 
         <
         button onClick = {
-            () => navigate(-1) }
-        className = "bg-gray-900 hover:bg-black text-white px-5 py-2 rounded-xl shadow" >
-        ⬅Back <
-        /button> <
-        /div>
+            () => navigate(-1)
+        }
+        className = "bg-gray-900 hover:bg-black text-white px-5 py-2 rounded-xl shadow" > ⬅Back <
+        /button> < /
+        div >
 
         { /* CARD */ } <
         div className = "max-w-6xl mx-auto bg-white shadow-2xl rounded-2xl p-8 space-y-6" >
@@ -162,8 +163,8 @@ const CourseForm = () => {
         Input name = "bgImage"
         placeholder = "Background Image"
         onChange = { handleChange }
-        /> <
-        /div>
+        /> < /
+        div >
 
         <
         Textarea name = "description"
@@ -193,7 +194,8 @@ const CourseForm = () => {
                 input key = { i }
                 value = { item }
                 onChange = {
-                    (e) => handleArrayChange("features", i, e.target.value) }
+                    (e) => handleArrayChange("features", i, e.target.value)
+                }
                 className = "input"
                 placeholder = "Feature" /
                 >
@@ -203,7 +205,8 @@ const CourseForm = () => {
         <
         Btn text = "Add Feature"
         onClick = {
-            () => addArrayItem("features") }
+            () => addArrayItem("features")
+        }
         />
 
         { /* TECHNOLOGIES */ } <
@@ -231,15 +234,16 @@ const CourseForm = () => {
                     (e) =>
                     handleObjectChange("technologies", i, "icon", e.target.value)
                 }
-                /> <
-                /div>
+                /> < /
+                div >
             ))
         }
 
         <
         Btn text = "Add Technology"
         onClick = {
-            () => addObjectItem("technologies", { name: "", icon: "" }) }
+            () => addObjectItem("technologies", { name: "", icon: "" })
+        }
         />
 
         { /* CAREER */ } <
@@ -276,8 +280,8 @@ const CourseForm = () => {
                     (e) =>
                     handleObjectChange("careerOpportunities", i, "iconName", e.target.value)
                 }
-                /> <
-                /div>
+                /> < /
+                div >
             ))
         }
 
@@ -295,13 +299,12 @@ const CourseForm = () => {
 
         { /* SUBMIT */ } <
         button onClick = { handleSubmit }
-        className = "w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold shadow-lg transition" >
-        🚀Create Course <
+        className = "w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold shadow-lg transition" > 🚀Create Course <
         /button>
 
         <
-        /div> <
-        /div>
+        /div> < /
+        div >
     );
 };
 
@@ -330,8 +333,7 @@ const Section = ({ title }) => ( <
 
 const Btn = ({ text, onClick }) => ( <
     button onClick = { onClick }
-    className = "bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-lg mt-2" >
-    { text } <
+    className = "bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-lg mt-2" > { text } <
     /button>
 );
 

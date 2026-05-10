@@ -100,7 +100,7 @@ const AdminCourses = () => {
             }
 
             await axios.delete(
-                `http://localhost:5000/api/course-highlights/${id}`, {
+                `${BASE_URL}/api/course-highlights/${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

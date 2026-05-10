@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import BASE_URL from "../BASEURL";
 
 const ServiceForm = () => {
     const navigate = useNavigate();
@@ -28,7 +29,7 @@ const ServiceForm = () => {
             setLoading(true);
 
             const res = await axios.get(
-                "http://localhost:5000/api/services", { headers: { Authorization: "Bearer " + token } }
+                `${BASE_URL}/api/services`, { headers: { Authorization: "Bearer " + token } }
             );
 
             const service = res.data.data.find((s) => s._id === id);
@@ -86,12 +87,12 @@ const ServiceForm = () => {
         try {
             if (id) {
                 await axios.put(
-                    "http://localhost:5000/api/services/" + id,
+                    `${BASE_URL}/api/services/${id}`,
                     payload, { headers: { Authorization: "Bearer " + token } }
                 );
             } else {
                 await axios.post(
-                    "http://localhost:5000/api/services",
+                    `${BASE_URL}/api/services`,
                     payload, { headers: { Authorization: "Bearer " + token } }
                 );
             }
@@ -122,7 +123,8 @@ const ServiceForm = () => {
         input placeholder = "Title"
         value = { form.title }
         onChange = {
-            (e) => setForm({...form, title: e.target.value }) }
+            (e) => setForm({...form, title: e.target.value })
+        }
         className = "border p-2 w-full" /
         >
 
@@ -130,7 +132,8 @@ const ServiceForm = () => {
         input placeholder = "Slug"
         value = { form.slug }
         onChange = {
-            (e) => setForm({...form, slug: e.target.value }) }
+            (e) => setForm({...form, slug: e.target.value })
+        }
         className = "border p-2 w-full" /
         >
 
@@ -138,7 +141,8 @@ const ServiceForm = () => {
         input placeholder = "Icon"
         value = { form.icon }
         onChange = {
-            (e) => setForm({...form, icon: e.target.value }) }
+            (e) => setForm({...form, icon: e.target.value })
+        }
         className = "border p-2 w-full" /
         >
 
@@ -146,7 +150,8 @@ const ServiceForm = () => {
         textarea placeholder = "Description"
         value = { form.description }
         onChange = {
-            (e) => setForm({...form, description: e.target.value }) }
+            (e) => setForm({...form, description: e.target.value })
+        }
         className = "border p-2 w-full" /
         >
 
@@ -160,7 +165,8 @@ const ServiceForm = () => {
         <
         input value = { featureInput }
         onChange = {
-            (e) => setFeatureInput(e.target.value) }
+            (e) => setFeatureInput(e.target.value)
+        }
         placeholder = "Add feature"
         className = "border p-2 w-full" /
         >
@@ -170,8 +176,8 @@ const ServiceForm = () => {
         onClick = { addFeature }
         className = "bg-blue-600 text-white px-3 rounded" >
         Add <
-        /button> <
-        /div>
+        /button> < /
+        div >
 
         { /* LIST */ } <
         div className = "mt-3 space-y-2" > {
@@ -182,16 +188,16 @@ const ServiceForm = () => {
                 span > { f } < /span> <
                 button type = "button"
                 onClick = {
-                    () => removeFeature(i) }
-                className = "text-red-500" >
-                ❌
+                    () => removeFeature(i)
+                }
+                className = "text-red-500" > ❌
                 <
-                /button> <
-                /div>
+                /button> < /
+                div >
             ))
         } <
-        /div> <
-        /div>
+        /div> < /
+        div >
 
         { /* POPULAR */ } <
         label className = "flex items-center gap-2" >
@@ -211,8 +217,8 @@ const ServiceForm = () => {
         /button>
 
         <
-        /form> <
-        /div>
+        /form> < /
+        div >
     );
 };
 
