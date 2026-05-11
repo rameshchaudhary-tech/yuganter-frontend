@@ -8,7 +8,6 @@ import axios from "axios";
 import BASE_URL from "../BASEURL";
 
 export default function Services() {
-
     const [bookingModal, setBookingModal] = useState({
         isOpen: false,
         service: null,
@@ -33,7 +32,6 @@ export default function Services() {
     // ✅ FETCH SERVICES
     const fetchServices = async() => {
         try {
-
             const res = await axios.get(
                 `${BASE_URL}/api/services`
             );
@@ -43,9 +41,7 @@ export default function Services() {
             } else {
                 setServices([]);
             }
-
         } catch (error) {
-
             if (error.response) {
                 console.log(
                     "❌ Service Fetch Error:",
@@ -59,7 +55,6 @@ export default function Services() {
             }
 
             setServices([]);
-
         } finally {
             setLoading(false);
         }
@@ -115,22 +110,17 @@ export default function Services() {
 
         <
         h1 className = "text-4xl md:text-6xl font-black leading-tight mb-6" >
-
-        Our { " " }
-
-        <
+        Our { " " } <
         span className = "bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent" >
         IT Services <
-        /span>
-
-        <
+        /span> <
         /h1>
 
         <
         p className = "text-lg md:text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0" >
         Transform your business with cutting - edge IT solutions crafted
-        for your success.We provide modern web development, mobile applications,
-        and scalable software solutions. <
+        for your success.We provide modern web development,
+        mobile applications, and scalable software solutions. <
         /p>
 
         { /* BUTTONS */ } <
@@ -149,9 +139,7 @@ export default function Services() {
         /a>
 
         <
-        /div>
-
-        <
+        /div> <
         /div>
 
         { /* RIGHT IMAGE */ } <
@@ -173,21 +161,13 @@ export default function Services() {
         >
 
         <
+        /div> <
+        /div> <
         /div>
 
         <
-        /div>
-
-        <
-        /div>
-
-        <
-        /div>
-
-        <
-        /div>
-
-        <
+        /div> <
+        /div> <
         /section>
 
         { /* SERVICES SECTION */ } <
@@ -212,15 +192,10 @@ export default function Services() {
 
         <
         h2 className = "text-4xl md:text-5xl font-black mb-6 leading-tight" >
-
-        Explore Our { " " }
-
-        <
+        Explore Our { " " } <
         span className = "bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent" >
         Services <
-        /span>
-
-        <
+        /span> <
         /h2>
 
         <
@@ -265,7 +240,8 @@ export default function Services() {
                                 transitionDelay: `${index * 100}ms`,
                                 opacity: isVisible ? 1 : 0,
                                 transform: isVisible ?
-                                    "translateY(0)" : "translateY(40px)",
+                                    "translateY(0)" :
+                                    "translateY(40px)",
                             }
                         } >
 
@@ -333,9 +309,7 @@ export default function Services() {
                         /button>
 
                         <
-                        /div>
-
-                        <
+                        /div> <
                         /div>
 
                     ))
@@ -348,68 +322,7 @@ export default function Services() {
         }
 
         <
-        /div>
-
-        <
-        /section>
-
-        { /* CTA SECTION */ } <
-        section className = "pb-24 px-6" >
-
-        <
-        div className = "max-w-7xl mx-auto relative overflow-hidden rounded-[40px] border border-white/10 bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 backdrop-blur-xl shadow-2xl" >
-
-        { /* GLOW */ } <
-        div className = "absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 blur-3xl" > < /div>
-
-        <
-        div className = "relative z-10 py-16 px-8 md:px-16 text-center" >
-
-        <
-        h3 className = "text-3xl md:text-5xl font-black mb-6 leading-tight" >
-
-        Ready to Transform Your { " " }
-
-        <
-        span className = "bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent" >
-        Business ?
-        <
-        /span>
-
-        <
-        /h3>
-
-        <
-        p className = "text-lg text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed" >
-        Partner with YugAntar Technologies
-        for end - to - end IT solutions. <
-        /p>
-
-        <
-        div className = "flex flex-col sm:flex-row gap-5 justify-center" >
-
-        <
-        Link to = "/contact"
-        className = "inline-flex items-center justify-center gap-3 bg-gradient-to-r from-indigo-500 to-purple-600 px-7 py-4 rounded-2xl font-bold text-white shadow-2xl shadow-indigo-500/30 hover:scale-105 transition-all duration-300" >
-        Book Free Consultation <
-        /Link>
-
-        <
-        a href = "tel:+916355582605"
-        className = "px-7 py-4 border border-indigo-500/40 bg-white/5 backdrop-blur-md rounded-2xl font-semibold text-indigo-300 hover:bg-indigo-500 hover:text-white transition-all duration-300" >
-        Call : +91 6355582605 <
-        /a>
-
-        <
-        /div>
-
-        <
-        /div>
-
-        <
-        /div>
-
-        <
+        /div> <
         /section>
 
         { /* MODAL */ } <
