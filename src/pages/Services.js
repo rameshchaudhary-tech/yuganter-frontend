@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import ServiceBookingModal from "../components/ServiceBookingModal";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import axios from "axios";
-import
+import BASE_URL from "../BASEURL";
 
 export default function Services() {
 

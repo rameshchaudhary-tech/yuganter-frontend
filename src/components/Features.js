@@ -18,9 +18,12 @@ export default function Features() {
     useEffect(() => {
         fetchFeatures();
     }, []);
+    console.log("NEW BUILD");
 
     // ✅ FETCH FEATURES
     const fetchFeatures = async() => {
+        console.log("NEW BUILD");
+
         try {
             const res = await axios.get(`${BASE_URL}/api/features`);
 
